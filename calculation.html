@@ -41,13 +41,11 @@
 app = Flask(__name__)
 port = "5000"
 public_url = ngrok.connect(port).public_url
-print("public url is", public_url) #this is important because it is free version of ngrok (url changes all time we create the APP)
-#if pay ngrok, url would be static and same urlstatic.ngrok (no need to retrieve public url)
-#pay = give url in ngrok website
+print("public url is", public_url) 
 
-CORS(app) #help running the app
+CORS(app) 
 
-@app.route('/sum', methods=['POST']) #url.app/sum ,> sum url public url, then you have the function sum_numbers
+@app.route('/sum', methods=['POST']) 
 
 def sum_numbers():
     data = request.json
