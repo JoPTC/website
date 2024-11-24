@@ -1,4 +1,4 @@
-<!DOCTYPE html> aaa
+<!DOCTYPE html> bbb
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,30 +38,7 @@
     <input type="number" id="numB" placeholder="Enter number B" required>
     <button onclick="sendData()">Calculate Sum</button>
 
-app = Flask(__name__)
-port = "5000"
-public_url = ngrok.connect(port).public_url
-print("public url is", public_url) 
 
-CORS(app) 
-
-@app.route('/sum', methods=['POST']) 
-
-def sum_numbers():
-    data = request.json
-    A = data['A']
-    B = data['B']
-    D = data['D']
-    print("Received A:", A)
-    print("Received B:", B)
-    print("Received D:", D)
-    C = A + B*D
-    return {'A': A, 'B': B, 'C': C, 'D': D}
-
-
-app.run(port=5000)
-    <div id="results">Results: </div>
-</body>
 </html>
 
 
