@@ -38,13 +38,6 @@
     <input type="number" id="numB" placeholder="Enter number B" required>
     <button onclick="sendData()">Calculate Sum</button>
 
-    from flask import Flask, request, jsonify #to receive POST JSON FORMAT
-from pyngrok import ngrok #connect to NGROK
-from flask_cors import CORS  #enable multi source of element talking with each other
-
-# Initialize Flask app to connect to ngrok
-#flask = help connect to ngrok and talk with tunnel
-
 app = Flask(__name__)
 port = "5000"
 public_url = ngrok.connect(port).public_url
