@@ -37,6 +37,38 @@
     <input type="number" id="numA" placeholder="Enter number A" required>
     <input type="number" id="numB" placeholder="Enter number B" required>
     <button onclick="sendData()">Calculate Sum</button>
+
+    from flask import Flask, request, jsonify #to receive POST JSON FORMAT
+from pyngrok import ngrok #connect to NGROK
+from flask_cors import CORS  #enable multi source of element talking with each other
+
+# Initialize Flask app to connect to ngrok
+#flask = help connect to ngrok and talk with tunnel
+
+app = Flask(__name__)
+port = "5000"
+public_url = ngrok.connect(port).public_url
+print("public url is", public_url) #this is important because it is free version of ngrok (url changes all time we create the APP)
+#if pay ngrok, url would be static and same urlstatic.ngrok (no need to retrieve public url)
+#pay = give url in ngrok website
+
+CORS(app) #help running the app
+
+@app.route('/sum', methods=['POST']) #url.app/sum ,> sum url public url, then you have the function sum_numbers
+
+def sum_numbers():
+    data = request.json
+    A = data['A']
+    B = data['B']
+    D = data['D']
+    print("Received A:", A)
+    print("Received B:", B)
+    print("Received D:", D)
+    C = A + B*D
+    return {'A': A, 'B': B, 'C': C, 'D': D}
+
+
+app.run(port=5000)
     <div id="results">Results: </div>
 </body>
 </html>
